@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+
 /**
  * Percolation
  * Model of a percolation system using an N-by-N grid of sites.
@@ -7,30 +9,25 @@
  *
  * @author Terry
  */
-
-package percolation;
-
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-
 public class Percolation {
-    private int N;
+    private int n;
     private WeightedQuickUnionUF fullSet;
     private WeightedQuickUnionUF percolateSet;
     private boolean[] openSet;      // Use index of the grid.
     private int openNum = 0;
 
     /**
-     * Create N-by-N grid, with all sites initially blocked.
+     * Create n-by-n grid, with all sites initially blocked.
      */
-    public Percolation(int N) {
-        if (N <= 0) {
+    public Percolation(int n) {
+        if (n <= 0) {
             throw new IllegalArgumentException("Grid size must be a natural number.");
         }
 
-        this.N = N;
-        fullSet = new WeightedQuickUnionUF(N * N + 1);
-        percolateSet = new WeightedQuickUnionUF(N * N + 2);
-        openSet = new boolean[N * N];
+        this.n = n;
+        fullSet = new WeightedQuickUnionUF(n * n + 1);
+        percolateSet = new WeightedQuickUnionUF(n * n + 2);
+        openSet = new boolean[n * n];
     }
 
     /**
@@ -39,18 +36,20 @@ public class Percolation {
     public void open(int row, int col) {
         checkBounds(row, col);
 
+        int index = corToIndex(row, col);
+
         if (!isOpen(row, col)) {
-            openSet[corToIndex(row, col)] = true;
+            openSet[index] = true;
             openNum++;
 
             /* Open the top row and set it as percolate. */
-            if (row == 0) {
-                fullSet.union(corToIndex(row, col), N * N);
-                percolateSet.union(corToIndex(row, col), N * N);
+            if (row == 1) {
+                fullSet.union(index, n * n);
+                percolateSet.union(index, n * n);
             }
             /* Open the bottom row. */
-            if (row == N - 1) {
-                fullSet.union(corToIndex(row, col), N * N + 1);
+            if (row == n) {
+                percolateSet.union(index, n * n + 1);
             }
         }
         joinCells(row, col);
@@ -69,7 +68,8 @@ public class Percolation {
      */
     public boolean isFull(int row, int col) {
         checkBounds(row, col);
-        return fullSet.connected(corToIndex(row, col), N * N);
+        int index = corToIndex(row, col);
+        return fullSet.find(index) == fullSet.find(n * n);
     }
 
     /**
@@ -83,37 +83,38 @@ public class Percolation {
      * Does the system percolate?
      */
     public boolean percolates() {
-        return percolateSet.connected(N * N, N * N + 1);
+        return percolateSet.find(n * n) == percolateSet.find(n * n + 1);
     }
 
     /**
      * Check if the row or column is outside its prescribed range.
      */
     private void checkBounds(int row, int col) {
-        if (row < 0 || col < 0 || row >= N || col >= N ) {
+        if (!isValidCell(row, col)) {
             throw new IndexOutOfBoundsException("Row or column is out of bounds.");
         }
     }
 
     /**
      * Convert the coordinates to the index of the grid for union(int p, int q).
+     *
      * @return the index of the grid
      */
     private int corToIndex(int row, int col) {
-        return row * N + col;
+        return (row - 1) * n + (col - 1);
     }
 
     /**
      * Connects open cells with their neighbors.
      */
     private void joinCells(int row, int col) {
-        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int[][] directions = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 
         for (int[] dir : directions) {
             int newRow = row + dir[0];
             int newCol = col + dir[1];
 
-            if (newRow >= 0 && newRow < N && newCol >= 0 && newCol < N && isOpen(newRow, newCol)) {
+            if (isValidCell(newRow, newCol) && isOpen(newRow, newCol)) {
                 int currentIndex = corToIndex(row, col);
                 int neighborIndex = corToIndex(newRow, newCol);
 
@@ -124,7 +125,15 @@ public class Percolation {
     }
 
     /**
+     * Checks if the specified cell is within the valid range of the grid.
+     */
+    private boolean isValidCell(int row, int col) {
+        return row >= 1 && row <= n && col >= 1 && col <= n;
+    }
+
+    /**
      * Test client (optional).
      */
-    public static void main(String[] args) { }
+    public static void main(String[] args) {
+    }
 }
