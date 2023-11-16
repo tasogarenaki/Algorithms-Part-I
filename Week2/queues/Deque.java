@@ -5,6 +5,7 @@
  * @author Terry
  */
 
+import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -165,7 +166,7 @@ public class Deque<Item> implements Iterable<Item> {
      *                     Unit Tests
      ******************************************************/
     private static void testEmpty() {
-        System.out.println("Test Empty.");
+        StdOut.println("Test Empty.");
         Deque<String> d1 = new Deque<String>();
         compare("d1.iterator().hasNext()", d1.iterator().hasNext(), false);
         compare("d1.isEmpty()", d1.isEmpty(), true);
@@ -173,9 +174,9 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private static void testAddFirstRemoveFirst() {
-        System.out.println("\nTest add first then remove first.");
+        StdOut.println("\nTest add first then remove first.");
         Deque<String> d1 = new Deque<String>();
-        System.out.println("d1.addFirst(\"test\");");
+        StdOut.println("d1.addFirst(\"test\");");
         d1.addFirst("test");
         compare("d1.iterator().hasNext()", d1.iterator().hasNext(), true);
         compare("d1.iterator().next()", d1.iterator().next(), "test");
@@ -186,9 +187,9 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private static void testAddFirstRemoveLast() {
-        System.out.println("\nTest add first then remove last.");
+        StdOut.println("\nTest add first then remove last.");
         Deque<String> d1 = new Deque<String>();
-        System.out.println("d1.addFirst(\"test\");");
+        StdOut.println("d1.addFirst(\"test\");");
         d1.addFirst("test");
         compare("d1.iterator().hasNext()", d1.iterator().hasNext(), true);
         compare("d1.iterator().next()", d1.iterator().next(), "test");
@@ -199,9 +200,9 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private static void testAddLastRemoveFirst() {
-        System.out.println("\nTest add last then remove first.");
+        StdOut.println("\nTest add last then remove first.");
         Deque<String> d1 = new Deque<String>();
-        System.out.println("d1.addLast(\"test\");");
+        StdOut.println("d1.addLast(\"test\");");
         d1.addLast("test");
         compare("d1.iterator().hasNext()", d1.iterator().hasNext(), true);
         compare("d1.iterator().next()", d1.iterator().next(), "test");
@@ -213,9 +214,9 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private static void testAddLastRemoveLast() {
-        System.out.println("\nTest add last then remove last.");
+        StdOut.println("\nTest add last then remove last.");
         Deque<String> d1 = new Deque<String>();
-        System.out.println("d1.addLast(\"test\");");
+        StdOut.println("d1.addLast(\"test\");");
         d1.addLast("test");
         compare("d1.iterator().hasNext()", d1.iterator().hasNext(), true);
         compare("d1.iterator().next()", d1.iterator().next(), "test");
@@ -227,10 +228,10 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private static void compare(String command, Object result, Object expected) {
-        System.out.println(command + " -> " + result + " = " + expected);
+        StdOut.println(command + " -> " + result + " = " + expected);
         String errorMessage =
                 "ERROR!!! Result and expected dont match." +
                         " Result: " + result + " Expected: " + expected;
-        if (result != expected) System.out.println(errorMessage);
+        if (result != expected) StdOut.println(errorMessage);
     }
 }
