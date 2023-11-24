@@ -1,8 +1,16 @@
-/* *****************************************************************************
- *  Name:
- *  Date:
- *  Description:
- **************************************************************************** */
+/**
+ * BruteCollinearPoints
+ * <p>
+ * Examines four points at a time and checks whether they all lie on the same line segment,
+ * returning all such line segments. To determine collinearity, it checks whether the slopes
+ * between
+ * the first point and each of the other three points are equal. The class provides methods to find
+ * and retrieve line
+ * segments, as well as to check for
+ * collinearity among four given points.
+ *
+ * @author Terry
+ */
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
