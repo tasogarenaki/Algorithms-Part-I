@@ -9,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/../../Week2/queues/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week2/queues/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Week3/collinear/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week3/collinear/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solver$Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solver.class" beforeDir="false" afterPath="$PROJECT_DIR$/Solver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Solver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +49,9 @@
   </component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="106" />
@@ -107,7 +113,7 @@
     <configuration name="Solver" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Solver" />
       <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="puzzle3x3-unsolvable2.txt" />
+      <option name="PROGRAM_PARAMETERS" value="puzzle41.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
